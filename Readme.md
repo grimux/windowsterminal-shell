@@ -1,6 +1,6 @@
 # PowerShell Scripts to Install/Uninstall Context Menu Items for Windows Terminal
 
-*A project backed by [LeXtudio Inc.](https://www.lextudio.com)*
+Now with `scoop` support!!
 
 ## Install
 
@@ -44,5 +44,7 @@ The scripts must be run as administrator.
 
 Downloading Windows Terminal icon from GitHub (in `install.ps1`) requires internet connection, but in general is just an optional step that won't be executed in most cases.
 
-## More Products
-To learn more about other cool products from LeXtudio Inc. , please visit [our homepage](https://www.lextudio.com/#projects).
+### Using scoop
+This script will search for a scoop installation of Windows Terminal before checking for a Windows Store version.
+
+As long as you have a default scoop directory, this script should work.  Default `scoop` directory is: `%USERPROFILE%\scoop`.
