@@ -10,6 +10,14 @@ param(
     [switch] $PreRelease
 )
 
+$scoopPath = "$env:USERPROFILE\scoop\apps\windows-terminal"
+$scoopEnv = [System.Environment]::GetEnvironmentVariable('SCOOP')
+
+if (Test-Path ("$scoopEnv\apps\windows-terminal")) {
+    $scoopPath = "$scoopEnv\apps\windows-terminal"
+}
+
+
 function Generate-HelperScript(
         # The cache folder
         [Parameter(Mandatory=$true)]
@@ -159,8 +167,8 @@ function GetProgramFilesFolder(
     [Parameter(Mandatory=$true)]
     [bool]$includePreview)
 {
-    if (Test-Path "$env:USERPROFILE\scoop\apps\windows-terminal") {
-        $result = "$env:USERPROFILE\scoop\apps\windows-terminal\current"
+    if (Test-Path $scoopPath) {
+        $result = "$scoopPath\current"
         return $result
     } else {
         $root = "$Env:ProgramFiles\WindowsApps"
@@ -463,8 +471,8 @@ if ($PSVersionTable.PSVersion.Major -lt 6) {
     exit 1
 }
 
-if (Test-Path "$env:USERPROFILE\scoop\apps\windows-terminal") {
-        $executable = "$env:USERPROFILE\scoop\apps\windows-terminal\current\wt.exe"
+if (Test-Path $scoopPath) {
+        $executable = "$scoopPath\current\wt.exe"
 } else {
         $executable = "$env:LOCALAPPDATA\Microsoft\WindowsApps\wt.exe"
 }
