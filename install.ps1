@@ -237,7 +237,7 @@ function GetActiveProfiles(
     [bool]$isScoop)
 {
     if ($isScoop) {
-        $file = "$env:LocalAppData\Microsoft\Windows Terminal\settings.json"
+        $file = "$scoopPath\current\settings\settings.json"
     }
     elseif ($isPreview) {
         $file = "$env:LocalAppData\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\settings.json"
